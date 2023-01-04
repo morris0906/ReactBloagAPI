@@ -6,6 +6,9 @@ namespace ReactBloagAPI.Data
     {
         IEnumerable<Blog> GetBlogs();   
         Blog GetBlogById(int id);
-        Blog AddBlog(Blog blog);  
+        Blog AddBlog(Blog blog);
+        IEnumerable<Users> GetUsers();
+        Users GetUserById(int id);
+        Users AddUser(Users user);
     }
 }

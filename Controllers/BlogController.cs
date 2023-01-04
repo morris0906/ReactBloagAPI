@@ -17,7 +17,7 @@ namespace ReactBloagAPI.Controllers
             _repositroy = repositroy;
         }
 
-        [HttpGet()]
+        [HttpGet("blogs")]
         public ActionResult<IEnumerable<BlogOutDTO>> GetBlogs() 
         {
             IEnumerable<Blog> blogs = _repositroy.GetBlogs();
@@ -66,6 +66,23 @@ namespace ReactBloagAPI.Controllers
                 Tag= addedBlog.Tag };
                 return CreatedAtAction(nameof(GetBlog), new { id = blogOut.Id }, blogOut);
         }
-
+        [HttpGet("users")]
+        public ActionResult<IEnumerable<UserOutDTO>> GetUsers() {
+            IEnumerable<Users> users = _repositroy.GetUsers();
+            IEnumerable<UserOutDTO> b = users.Select(e => new UserOutDTO
+            {
+                Name = e.Name
+            });
+            return Ok(b);
+        }
+        [HttpPost("AddUser")]
+        public void Adduser(UserInputDTO user)
+        {
+            Users u = new()
+            {
+                Name = user.Name
+            };
+            Users addedUser = _repositroy.AddUser(u);
+        }
     }
 }
