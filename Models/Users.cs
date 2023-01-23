@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
 
 namespace ReactBloagAPI.Models
 {
@@ -7,6 +8,14 @@ namespace ReactBloagAPI.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string FistName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+        [Required]
+        public string Email { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string Password { get; set; }
     }
 }

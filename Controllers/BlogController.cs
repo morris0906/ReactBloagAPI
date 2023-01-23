@@ -71,7 +71,7 @@ namespace ReactBloagAPI.Controllers
             IEnumerable<Users> users = _repositroy.GetUsers();
             IEnumerable<UserOutDTO> b = users.Select(e => new UserOutDTO
             {
-                Name = e.Name
+                UserName = e.UserName
             });
             return Ok(b);
         }
@@ -80,7 +80,11 @@ namespace ReactBloagAPI.Controllers
         {
             Users u = new()
             {
-                Name = user.Name
+                FistName = user.FistName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                Password = user.Password
             };
             Users addedUser = _repositroy.AddUser(u);
         }

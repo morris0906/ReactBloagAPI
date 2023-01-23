@@ -1,7 +1,11 @@
-﻿namespace ReactBloagAPI.DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ReactBloagAPI.DTOs
 {
     public class UserOutDTO
     {
-        public string Name { get; set; }
+        public string FistName { get;  }
+        public string LastName { get;  }
+        public string UserName { get;  }
     }
 }
