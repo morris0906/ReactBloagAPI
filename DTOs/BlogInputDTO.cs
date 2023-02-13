@@ -8,6 +8,5 @@ namespace ReactBloagAPI.DTOs
         public string BlogBody { get; set; }
         public string Author { get; set; }
         public string Tag { get; set; }
-        public DateTime DateTime { get; set; }
     }
 }

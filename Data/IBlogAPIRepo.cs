@@ -10,5 +10,6 @@ namespace ReactBloagAPI.Data
         IEnumerable<Users> GetUsers();
         Users GetUserById(int id);
         Users AddUser(Users user);
+        Users GetUserByUsername (string username);
     }
 }

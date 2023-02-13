@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using ReactBloagAPI.Models;
 using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ReactBloagAPI.Data
 {
@@ -41,11 +42,17 @@ namespace ReactBloagAPI.Data
         public Users AddUser(Users user)
         {
             EntityEntry<Users> e = _dbContext.Users.Add(user);
-            Users b = e.Entity;
+            Users u = e.Entity;
             _dbContext.SaveChanges();
-            return b;
+            return u;
 
         }
+        public Users GetUserByUsername(string username) 
+        {
+            Users  user = _dbContext.Users.FirstOrDefault(e => e.UserName == username);
+            return user;
+        }
+        
 
 
     }

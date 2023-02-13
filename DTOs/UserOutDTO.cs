@@ -4,8 +4,8 @@ namespace ReactBloagAPI.DTOs
 {
     public class UserOutDTO
     {
-        public string FistName { get;  }
-        public string LastName { get;  }
-        public string UserName { get;  }
+        public string FistName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set;  }
     }
 }

@@ -14,7 +14,5 @@ namespace ReactBloagAPI.Models
         public string Author { get; set; }
         [Required]
         public string Tag { get; set; }
-        [Required]
-        public DateTime DateTime { get; set; }
     }
 }

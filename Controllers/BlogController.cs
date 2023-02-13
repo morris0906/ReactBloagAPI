@@ -28,7 +28,6 @@ namespace ReactBloagAPI.Controllers
                 BlogBody = e.BlogBody,
                 Title = e.Title,
                 Tag = e.Tag,
-                DateTime = e.DateTime
             });
             return Ok(b);
         }
@@ -42,7 +41,13 @@ namespace ReactBloagAPI.Controllers
             }
             else
             {
-                BlogOutDTO b = new() { Id = blog.Id, Author = blog.Author, BlogBody = blog.BlogBody, Title = blog.Title, Tag = blog.Tag };
+                BlogOutDTO b = new() { 
+                    Id = blog.Id, 
+                    Author = blog.Author, 
+                    BlogBody = blog.BlogBody, 
+                    Title = blog.Title, 
+                    Tag = blog.Tag 
+                };
                 return Ok(b);
             }
         }
@@ -55,7 +60,6 @@ namespace ReactBloagAPI.Controllers
                 Title = blog.Title, 
                 BlogBody = blog.BlogBody, 
                 Tag = blog.Tag,
-                DateTime = blog.DateTime
             };
             Blog addedBlog = _repositroy.AddBlog(b);
             BlogOutDTO blogOut = new () {
@@ -63,8 +67,9 @@ namespace ReactBloagAPI.Controllers
                 Author = addedBlog.Author, 
                 Title= addedBlog.Title,
                 BlogBody = addedBlog.BlogBody,
-                Tag= addedBlog.Tag };
-                return CreatedAtAction(nameof(GetBlog), new { id = blogOut.Id }, blogOut);
+                Tag= addedBlog.Tag 
+            };
+            return CreatedAtAction(nameof(GetBlog), new { id = blogOut.Id }, blogOut);
         }
         [HttpGet("users")]
         public ActionResult<IEnumerable<UserOutDTO>> GetUsers() {
@@ -75,8 +80,8 @@ namespace ReactBloagAPI.Controllers
             });
             return Ok(b);
         }
-        [HttpPost("AddUser")]
-        public void Adduser(UserInputDTO user)
+        [HttpPost("addUser")]
+        public ActionResult<UserOutDTO> Adduser(UserInputDTO user)
         {
             Users u = new()
             {
@@ -87,6 +92,32 @@ namespace ReactBloagAPI.Controllers
                 Password = user.Password
             };
             Users addedUser = _repositroy.AddUser(u);
+            UserOutDTO userOut = new()
+            {
+                FistName= user.FistName,
+                LastName= user.LastName,    
+                UserName = addedUser.UserName
+            };
+            return CreatedAtAction(nameof(GetUser), new {username = userOut.UserName}, userOut);
+        }
+        [HttpGet("user/{USERNAME}")]
+        public ActionResult<UserOutDTO> GetUser(string username)
+        {
+            Users user = _repositroy.GetUserByUsername(username);
+            if (user == null)
+            {
+                return NotFound(); 
+            }
+            else 
+            {
+                UserOutDTO u = new()
+                {
+                    FistName = user.FistName,
+                    LastName = user.LastName,
+                    UserName = user.UserName
+                };
+                return Ok(u); 
+            }
         }
     }
 }
