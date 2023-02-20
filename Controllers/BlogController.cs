@@ -85,7 +85,7 @@ namespace ReactBloagAPI.Controllers
         {
             Users u = new()
             {
-                FistName = user.FistName,
+                FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
                 Email = user.Email,
@@ -94,11 +94,11 @@ namespace ReactBloagAPI.Controllers
             Users addedUser = _repositroy.AddUser(u);
             UserOutDTO userOut = new()
             {
-                FistName= user.FistName,
+                FirstName= user.FirstName,
                 LastName= user.LastName,    
                 UserName = addedUser.UserName
             };
-            return CreatedAtAction(nameof(GetUser), new {username = userOut.UserName}, userOut);
+            return Ok(userOut);
         }
         [HttpGet("user/{USERNAME}")]
         public ActionResult<UserOutDTO> GetUser(string username)
@@ -112,7 +112,7 @@ namespace ReactBloagAPI.Controllers
             {
                 UserOutDTO u = new()
                 {
-                    FistName = user.FistName,
+                    FirstName = user.FirstName,
                     LastName = user.LastName,
                     UserName = user.UserName
                 };

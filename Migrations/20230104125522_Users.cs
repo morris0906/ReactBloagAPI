@@ -23,7 +23,7 @@ namespace ReactBloagAPI.Migrations
                 defaultValue: "");
 
             migrationBuilder.AddColumn<string>(
-                name: "FistName",
+                name: "FirstName",
                 table: "Users",
                 type: "TEXT",
                 nullable: false,
@@ -52,7 +52,7 @@ namespace ReactBloagAPI.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "FistName",
+                name: "FirstName",
                 table: "Users");
 
             migrationBuilder.DropColumn(

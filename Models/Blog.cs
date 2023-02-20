@@ -13,6 +13,6 @@ namespace ReactBloagAPI.Models
         [Required]
         public string Author { get; set; }
         [Required]
-        public string Tag { get; set; }
+        public string? Tag { get; set; }
     }
 }
